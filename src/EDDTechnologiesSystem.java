@@ -76,9 +76,7 @@ public class EDDTechnologiesSystem {
 
     public void login(String username, String password) {
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT u.*, c.full_name AS customer_full_name " +
-                    "FROM users u LEFT JOIN customers c ON u.user_id = c.user_id " +
-                    "WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -87,12 +85,6 @@ public class EDDTechnologiesSystem {
             if (rs.next()) {
                 currentUser = username;
                 userType = rs.getString("user_type");
-
-                // Store full name in the system if needed
-                String fullName = rs.getString("customer_full_name");
-                if (fullName == null) {
-                    fullName = rs.getString("full_name");
-                }
 
                 switch (userType) {
                     case "admin":
@@ -106,13 +98,11 @@ public class EDDTechnologiesSystem {
                         break;
                 }
             } else {
-                JOptionPane.showMessageDialog(mainFrame, "Invalid username or password",
-                        "Login Failed", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainFrame, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(mainFrame, "Database error: " + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
