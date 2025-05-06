@@ -14,7 +14,7 @@ public class LoginPanel extends JPanel {
     }
 
     private void initialize() {
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout(1, 10));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Title

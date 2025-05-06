@@ -53,7 +53,9 @@ public class AdminPanel extends JPanel {
 
         // Customers tab
         JPanel customersPanel = new JPanel(new BorderLayout());
-        customersTableModel = new DefaultTableModel(new Object[]{"Customer ID", "Name", "Email", "Phone", "Address", "Registered", "Flagged"}, 0);
+        customersTableModel = new DefaultTableModel(
+                new Object[]{"Customer ID", "Name", "Email", "Phone", "Address", "Registered", "Flagged"}, 0
+        );
         customersTable = new JTable(customersTableModel);
         customersPanel.add(new JScrollPane(customersTable), BorderLayout.CENTER);
 
@@ -85,7 +87,9 @@ public class AdminPanel extends JPanel {
 
         // Jobs tab
         JPanel jobsPanel = new JPanel(new BorderLayout());
-        jobsTableModel = new DefaultTableModel(new Object[]{"Job ID", "Equipment", "Technician", "Status", "Created Date"}, 0);
+        jobsTableModel = new DefaultTableModel(
+                new Object[]{"Job ID", "Equipment", "Technician", "Status", "Created Date"}, 0
+        );
         jobsTable = new JTable(jobsTableModel);
         jobsPanel.add(new JScrollPane(jobsTable), BorderLayout.CENTER);
 
@@ -698,11 +702,13 @@ public class AdminPanel extends JPanel {
                 stmt.setInt(1, supplierId);
                 stmt.executeUpdate();
 
-                JOptionPane.showMessageDialog(this, "Supplier removed successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Supplier removed successfully",
+                        "Success", JOptionPane.INFORMATION_MESSAGE);
                 loadSuppliers();
             } catch (SQLException ex) {
                 ex.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error removing supplier: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error removing supplier: " + ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

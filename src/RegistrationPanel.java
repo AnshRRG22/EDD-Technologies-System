@@ -65,7 +65,9 @@ public class RegistrationPanel extends JPanel {
                 String address = addressField.getText();
 
                 if (username.isEmpty() || password.isEmpty() || fullName.isEmpty() || email.isEmpty() || address.isEmpty()) {
-                    JOptionPane.showMessageDialog(RegistrationPanel.this, "Please fill all required fields", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(
+                            RegistrationPanel.this, "Please fill all required fields",
+                            "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
